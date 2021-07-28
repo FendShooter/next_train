@@ -6,7 +6,7 @@ function Newsletter() {
     e.preventDefault();
     const email = emailRef.current.value;
     try {
-      const response = await fetch('http://localhost:3000/api/newsletter', {
+      const response = await fetch('/api/newsletter', {
         method: 'POST',
         body: JSON.stringify({ email }),
         headers: {

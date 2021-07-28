@@ -7,15 +7,15 @@ const sendEmail = async (options) => {
     port: 465,
     secure: true,
     auth: {
-      user: 'oldhumblelion@gmail.com', // generated ethereal user
-      pass: 'Humblelion', // generated ethereal password
+      user: process.env.SENDER, // generated ethereal user
+      pass: process.env.MP, // generated ethereal password
     },
   });
 
   // send mail with defined transport object
   let message = {
-    from: 'oldhumblelion@gmail.com', // sender address
-    to: 'virgile.dokouvi@gmail.com', // list of receivers
+    from: process.env.SENDER, // sender address
+    to: process.env.receiver, // list of receivers
     subject: 'Your Quote', // Subject line
     // text: options.message, // plain text body
     html: options.html,

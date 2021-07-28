@@ -37,7 +37,7 @@ async function handler(req, res) {
       </table>
       `,
     };
-    // await sendEmail(options);
+    await sendEmail(options);
     await note.save();
 
     res.status(201).json({ success: true, note });

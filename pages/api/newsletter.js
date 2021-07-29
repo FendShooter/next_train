@@ -3,8 +3,8 @@ import fs from 'fs';
 import Note from '../../models/Note';
 import db_connect from '../../helper/db_connect';
 import sendEmail from '../../helper/nodemailer';
-import nodemailerSendgrid from 'nodemailer-sendgrid';
-import nodemailer from 'nodemailer';
+    import sgMail from '@sendgrid/mail';
+
 
 db_connect();
 
@@ -23,7 +23,33 @@ async function handler(req, res) {
   if (req.method === 'POST') {
     const note = await new Note(req.body);
 
-    //   const options = {
+    sgMail.setApiKey(
+      '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'
+    );
+    const msg = {
+      to: 'gildryx8@yahoo.fr', // Change to your recipient
+      from: 'oldhumblelion@gmail.com', // Change to your verified sender
+      subject: 'Sending with SendGrid is Fun',
+      text: 'and easy to do anywhere, even with Node.js',
+      html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+    };
+    sgMail
+      .send(msg)
+      .then(() => {
+        console.log('Email sent');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    note.save();
+    res.status(201).json({ success: true, note });
+  }
+}
+export default handler;
+
+
+//   const options = {
     //     html: `<table style="width:100%; cellpadding:0; cellspacing:0">
     //     <tbody>
     //     <tr>
@@ -44,36 +70,3 @@ async function handler(req, res) {
 
     //   res.status(201).json({ success: true, note });
     // }
-
-    const transport = nodemailer.createTransport(
-      nodemailerSendgrid({
-        apiKey:
-          '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',
-      })
-    );
-
-    transport
-      .sendMail({
-        from: 'gildryx8@yahoo.fr',
-        from: 'virgile.dokouvi@gmail.com',
-        subject: 'hello world from me',
-        html: `<h1 style="font-weight: bold;margin-bottom: 15px; font-size: 16px;">Client current location</h1>
-<hr>
-<h2 style="font-weight: bold;margin-bottom: 15px; font-size: 16px;">Ref: # <strong></strong></h1>
-<h1>Current Location:</h1>
-<div>Address From: <span></span> <span></span></div>
-<div>House: <span></span> </div>
-<div>Appartement: <span></span> </div>
-<div>Address To: <span></span> <span></span></div>
-<div>Date: <span></span> </div>
-
-</div> `,
-      })
-      .then(() => {
-        console.log('sent');
-      });
-  }
-  note.save();
-  res.status(201).json({ success: true, note });
-}
-export default handler;

@@ -54,7 +54,7 @@ async function handler(req, res) {
 
     transport
       .sendMail({
-        from: 'oldhumblelion@gmail.com',
+        from: 'gildryx8@yahoo.fr',
         from: 'virgile.dokouvi@gmail.com',
         subject: 'hello world from me',
         html: `<h1 style="font-weight: bold;margin-bottom: 15px; font-size: 16px;">Client current location</h1>

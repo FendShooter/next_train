@@ -4,18 +4,19 @@ const sendEmail = async (options) => {
   // create reusable transporter object using the default SMTP transport
   const transporter = nodemailer.createTransport({
     service: 'gmail',
-    // host: 'smtp.gmail.com',
-    // port: 25,
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.SENDER, // generated ethereal user
       pass: process.env.MP, // generated ethereal password
       type: 'OAuth2',
 
       clientId:
-        '16500300548-1imsu2bruhau3hekh13s255ghltet683.apps.googleusercontent.com',
-      clientSecret: 'Bm5BJxcAo2whCxz5YN8730q8',
+        '16500300548-tggail8a7f1soo2vh04s8uq28npepdev.apps.googleusercontent.com',
+      clientSecret: 'pJXwxyCAfAlfQpg59Hp9BhJc',
       refreshToken:
-        '1//04viLr_SZbpOFCgYIARAAGAQSNwF-L9IrOAm58KfKwbOT3m93WeCE9Vyly7vYLU6e7gQexKRGmnj6buLxK_hf5qzlzgOL7xFDcqo',
+        '1//049OVBmxjz6ALCgYIARAAGAQSNwF-L9Ir2Gh7PTJyYtQ3MjBk8W4c0yUcxiN2W0DG_A5rsupygoBN4XvfcukrR6CtvqINhwASgyE',
     },
   });
 

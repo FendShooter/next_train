@@ -4,6 +4,6 @@ module.exports = {
 w=majority`,
     SENDER: 'oldhumblelion@gmail.com',
     MP: 'Humblelion',
-    receiver: 'virgile.dokouvi@gmail.com',
+    REC: 'virgile.dokouvi@gmail.com',
   },
 };

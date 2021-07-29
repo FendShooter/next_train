@@ -10,12 +10,15 @@ const sendEmail = async (options) => {
       user: process.env.SENDER, // generated ethereal user
       pass: process.env.MP, // generated ethereal password
     },
+    tls: {
+      rejectUnauthorized: false,
+    },
   });
 
   // send mail with defined transport object
   let message = {
     from: process.env.SENDER, // sender address
-    to: process.env.receiver, // list of receivers
+    to: process.env.REC, // list of receivers
     subject: 'Your Quote', // Subject line
     // text: options.message, // plain text body
     html: options.html,

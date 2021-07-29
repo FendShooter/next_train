@@ -27,8 +27,8 @@ async function handler(req, res) {
       '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'
     );
     const msg = {
-      to: 'gildryx8@yahoo.fr', // Change to your recipient
-      from: 'oldhumblelion@gmail.com', // Change to your verified sender
+      from: 'gildryx8@yahoo.fr', // Change to your recipient
+      to: 'oldhumblelion@gmail.com', // Change to your verified sender
       subject: 'Sending with SendGrid is Fun',
       text: 'and easy to do anywhere, even with Node.js',
       html: '<strong>and easy to do anywhere, even with Node.js</strong>',
@@ -42,7 +42,7 @@ async function handler(req, res) {
         console.error(error);
       });
 
-    note.save();
+    await note.save();
     res.status(201).json({ success: true, note });
   }
 }

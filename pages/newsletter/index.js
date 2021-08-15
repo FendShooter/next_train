@@ -20,7 +20,7 @@ function Newsletter() {
     }
   };
   return (
-    <div className='w-[800px] grid place-items-center h-[800px] border m-auto'>
+    <div className=' grid place-items-center h-full  border m-auto'>
       <form onSubmit={submitHandler}>
         <div className='m-4'>
           <label htmlFor='id'>user Name:</label>

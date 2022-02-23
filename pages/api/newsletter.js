@@ -2,7 +2,6 @@ import path from 'path';
 import fs from 'fs';
 import Note from '../../models/Note';
 import db_connect from '../../helper/db_connect';
-import sendEmail from '../../helper/nodemailer';
 
 db_connect();
 
@@ -37,7 +36,6 @@ async function handler(req, res) {
         </table>
         `,
     };
-    await sendEmail(options);
     await note.save();
     res.status(201).json({ success: true, note });
   }

@@ -5,5 +5,5 @@ function Title({ text, classes }) {
 export default Title;
 
 Title.defaultProps = {
-  text: 'My big Text',
+  text: 'My big Texts with all',
 };
